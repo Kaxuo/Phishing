@@ -1,0 +1,113 @@
+@import 'src/styles.scss';
+
+.block {
+  display: grid;
+  grid-template-rows: auto minmax(89vh, 1fr) auto;
+  background-color: $busi-color;
+  background-image: url('/assets/img/stock.jfif');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+
+.navbar {
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  img {
+    height: 100%;
+    margin: auto;
+  }
+}
+
+.hero {
+  display: grid;
+  grid-template-rows: auto auto auto auto 1fr;
+  row-gap: 2rem;
+  .title {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+  }
+  .text {
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+  }
+  .input-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    .name {
+      padding: 0.5rem;
+      border-radius: 6px;
+      width: 75%;
+      &:focus {
+        outline: none;
+      }
+    }
+    .btn {
+      background-color: #000000;
+      padding: 0.5rem 1.5rem;
+      color: white;
+    }
+  }
+  .lottie {
+    height: 20rem;
+  }
+  @media (max-width: 800px) {
+    .title {
+      font-size: 2rem;
+    }
+    .text {
+      font-size: 1em;
+    }
+  }
+}
+
+/* CSS Button */
+.btn {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.btn:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.btn:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
