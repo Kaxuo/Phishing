@@ -2,18 +2,36 @@
 
 .sidebar {
   background-color: $busi-color;
-  width: 250px;
   height: 100vh;
+  overflow: hidden;
+  transition: width 0.5s ease-in-out;
+  .logo {
+    width: 50px;
+    padding-left: 1rem;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
 }
 
 .menu-content {
   padding-left: 1rem;
   cursor: pointer;
   display: grid;
-  grid-template-columns: 15px 1fr;
+  grid-template-columns: 15px 100px;
   column-gap: 25px;
   .icon {
     scale: 1.4;
+    justify-self: center;
+  }
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 15px 200px;
+  column-gap: 10px;
+  .icon {
+    scale: 2;
     justify-self: center;
   }
 }

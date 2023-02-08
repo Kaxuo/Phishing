@@ -1,7 +1,7 @@
-<div class="flex min-h-0 flex-1 flex-col sidebar">
-  <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-    <div class="flex flex-shrink-0 items-center px-4">
-      <img class="h-8 w-auto" src="assets/img/busi-logo.png" alt="BuSi" />
+<div class="flex min-h-0 flex-1 flex-col sidebar" [ngStyle]="{'width':(open$ | async) ? '60px':'220px'}">
+  <div class="flex flex-1 flex-col pt-5 pb-4">
+    <div class="logo" (click)="switchOpen()">
+      <img src="assets/img/busi-logo.png" alt="BuSi" />
     </div>
     <nav class="mt-5 flex-1 space-y-1 px-2" aria-label="Sidebar">
       <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600">
@@ -26,12 +26,10 @@
       </a>
     </nav>
   </div>
-  <div class="flex flex-shrink-0 border-t border-indigo-800 p-4">
+  <div class="p-4 ">
     <a class="group block w-full flex-shrink-0">
-      <div class="flex items-center">
-        <div>
-          <img class="inline-block h-9 w-9 rounded-full" src="assets/img/blank-profile.svg" alt="" />
-        </div>
+      <div class="profile px-2 py-2">
+        <img class="rounded-full icon" src="assets/img/blank-profile.svg" alt="" />
         <div class="ml-3">
           <p class="text-sm font-medium text-white">Nguyen Hoang</p>
         </div>

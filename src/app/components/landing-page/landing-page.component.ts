@@ -14,7 +14,7 @@ export class LandingPageComponent implements OnInit {
     path: '/assets/lottie/recieving-mail.json'
   };
   form: FormGroup = this.fb.group({
-    name: ['', Validators.required]
+    name: ['', [Validators.required, Validators.maxLength(25)]]
   });
   constructor(private fb: FormBuilder, private router: Router) {}
 
