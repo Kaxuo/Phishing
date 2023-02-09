@@ -19,11 +19,12 @@ export class LandingPageComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {}
+
   onAnimate(animationItem: AnimationItem): void {
     console.log(animationItem);
   }
 
   startGame() {
-    this.router.navigate(['mailbox']);
+    this.router.navigate(['mailbox'], { queryParams: { page: 'inbox' } });
   }
 }

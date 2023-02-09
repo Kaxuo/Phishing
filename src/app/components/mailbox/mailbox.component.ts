@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faInbox, faEnvelope, faClipboardQuestion, faClipboardCheck, faCheckToSlot } from '@fortawesome/free-solid-svg-icons';
-import { BehaviorSubject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { IMails } from 'src/app/interfaces/IMails';
+import { MailsService } from 'src/app/services/mails.service';
 
 @Component({
   selector: 'app-mailbox',
@@ -8,18 +10,17 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./mailbox.component.scss']
 })
 export class MailboxComponent implements OnInit {
-  open$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  faInbox = faInbox;
-  faEnvelope = faEnvelope;
-  faClipboardQuestion = faClipboardQuestion;
-  faClipboardCheck = faClipboardCheck;
-  faCheckToSlot = faCheckToSlot;
-  constructor() {}
+  page: string;
+  mails$: Observable<IMails[]>;
+  routerActiveBackground = (query: string) => (query == this.page ? 'bg-indigo-600' : '');
+  constructor(private mailsService: MailsService, private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.mails$ = this.mailsService.getMails();
+    this.route.queryParams.subscribe((queryParams) => (this.page = queryParams['page']));
+  }
 
-  switchOpen() {
-    this.open$.next(!this.open$.getValue());
-    console.log(this.open$.getValue());
+  navigateToSpecificMail(id: number) {
+    this.router.navigate(['mailbox'], { queryParams: { page: 'mail', id: id, from: this.page } });
   }
 }

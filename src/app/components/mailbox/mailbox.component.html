@@ -1,39 +1,16 @@
-<div class="flex min-h-0 flex-1 flex-col sidebar" [ngStyle]="{'width':(open$ | async) ? '60px':'220px'}">
-  <div class="flex flex-1 flex-col pt-5 pb-4">
-    <div class="logo" (click)="switchOpen()">
-      <img src="assets/img/busi-logo.png" alt="BuSi" />
+<div class="main-grid h-screen">
+  <app-sidebar [routerActiveBackground]="routerActiveBackground"></app-sidebar>
+  <div class="right-side" *ngIf="mails$ | async as mails; else skeleton">
+    <app-inbox *ngIf="page == 'inbox'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-inbox>
+    <app-not-read *ngIf="page == 'unread'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-not-read>
+    <app-not-voted *ngIf="page == 'notvoted'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-not-voted>
+    <app-voted *ngIf="page == 'voted'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-voted>
+    <app-summary *ngIf="page == 'all'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-summary>
+    <app-specific-mail *ngIf="page == 'mail'" [mails]="mails"></app-specific-mail>
+  </div>
+  <ng-template #skeleton>
+    <div class="px-4 mt-3 overflow-hidden">
+      <div class="skeleton-items" *ngFor="let i of [].constructor(50)"></div>
     </div>
-    <nav class="mt-5 flex-1 space-y-1 px-2" aria-label="Sidebar">
-      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600">
-        <fa-icon class="text-indigo-300 icon" [icon]="faInbox"></fa-icon>
-        <span class="flex-1">Inbox</span>
-      </a>
-      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600">
-        <fa-icon class="text-indigo-300 icon" [icon]="faEnvelope"></fa-icon>
-        <span class="flex-1">Not read</span>
-      </a>
-      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600">
-        <fa-icon class="text-indigo-300 icon" [icon]="faClipboardQuestion"></fa-icon>
-        <span class="flex-1">Not voted</span>
-      </a>
-      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600">
-        <fa-icon class="text-indigo-300 icon" [icon]="faClipboardCheck"></fa-icon>
-        <span class="flex-1">Voted</span>
-      </a>
-      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600">
-        <fa-icon class="text-indigo-300 icon" [icon]="faCheckToSlot"></fa-icon>
-        <span class="flex-1">Summary</span>
-      </a>
-    </nav>
-  </div>
-  <div class="p-4 ">
-    <a class="group block w-full flex-shrink-0">
-      <div class="profile px-2 py-2">
-        <img class="rounded-full icon" src="assets/img/blank-profile.svg" alt="" />
-        <div class="ml-3">
-          <p class="text-sm font-medium text-white">Nguyen Hoang</p>
-        </div>
-      </div>
-    </a>
-  </div>
+  </ng-template>
 </div>

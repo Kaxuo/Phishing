@@ -1,0 +1,36 @@
+@import 'src/app/components/mailbox/mailbox.component.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.icons {
+  display: grid;
+  grid-template-columns: 20px 20px 20px 20px 20px 20px 20px 1fr 75px 20px 20px;
+  column-gap: 15px;
+  place-items: center;
+}
+
+.subject {
+  display: grid;
+  grid-template-columns: 1fr 20px 20px;
+  column-gap: 15px;
+}
+
+.icon {
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.attributes {
+  display: grid;
+  grid-template-columns: 40px 1fr 20px 20px 20px;
+  column-gap: 15px;
+  align-items: center;
+}
+
+.content {
+  font-family: 'Roboto', sans-serif;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
