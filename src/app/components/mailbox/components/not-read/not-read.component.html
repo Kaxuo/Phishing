@@ -3,7 +3,8 @@
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
       <h1 class="text-xl font-semibold text-gray-900">Not read</h1>
-      <p class="mt-2 text-sm text-gray-700">A list of all the mails you didn't read yet. Try to read them and guess if they're fake or not !</p>
+      <p class="mt-2 text-sm text-gray-700">A list of all the mails you didn't read yet. Try to read them and guess if
+        they're fake or not !</p>
     </div>
   </div>
   <div class="mt-8 flex flex-col">
@@ -13,6 +14,9 @@
           <table class="min-w-full divide-y divide-gray-300">
             <thead class="header">
               <tr>
+                <th scope="col" class="text-center text-sm font-semibold w-px"></th>
+                <th scope="col" class="text-center text-sm font-semibold w-px"></th>
+                <th scope="col" class="text-center  text-sm font-semibold w-px"></th>
                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 lg:pl-8">Sender</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">Receiver</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">Subject</th>
@@ -21,15 +25,19 @@
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white overflow-hidden">
               <ng-container *ngFor="let mail of mails">
-                <tr
-                  class="hover:bg-gray-100 cursor-pointer"
-                  *ngIf="!mail.read"
-                  [ngClass]="{ 'font-bold': !mail.read }"
+                <tr class="hover:bg-gray-100 cursor-pointer" *ngIf="!mail.read" [ngClass]="{ 'font-bold': !mail.read }"
                   (click)="navigateToSpecificMail(mail.id)">
-                  <td class="responsive-cell py-4 pl-4 pr-3 text-sm text-gray-900 sm:pl-6 lg:pl-8">{{ mail.sender }}</td>
-                  <td class="responsive-cell px-3 py-4 text-sm text-gray-500">{{ mail.receiver }}</td>
-                  <td class="responsive-cell px-3 py-4 text-sm text-gray-500">{{ mail.subject }}</td>
-                  <td class="responsive-cell px-3 py-4 text-sm text-gray-500">{{ mail.content }}</td>
+                  <td class="responsive-cell py-2 pl-2 pr-4 text-sm text-gray-900 w-px opacity-50"><fa-icon
+                      [icon]="faSquare"></fa-icon></td>
+                  <td class="responsive-cell py-2 pl-2 pr-4 text-sm text-gray-900 w-px opacity-50"><fa-icon
+                      [icon]="faStar"></fa-icon></td>
+                  <td class="responsive-cell py-2 pl-2 pr-4 text-sm text-gray-900 w-px opacity-50"><fa-icon
+                      [icon]="faShareSquare"></fa-icon></td>
+                  <td class="responsive-cell py-2 pl-4 pr-3 text-sm text-gray-900 sm:pl-6 lg:pl-8">{{ mail.sender }}
+                  </td>
+                  <td class="responsive-cell px-3 py-2 text-sm text-gray-500">{{ mail.receiver }}</td>
+                  <td class="responsive-cell px-3 py-2 text-sm text-gray-500">{{ mail.subject }}</td>
+                  <td class="responsive-cell px-3 py-2 text-sm text-gray-500">{{ mail.content }}</td>
                 </tr>
               </ng-container>
             </tbody>

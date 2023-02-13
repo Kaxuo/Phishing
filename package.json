@@ -22,6 +22,7 @@
     "@angular/router": "^14.0.0",
     "@fortawesome/angular-fontawesome": "^0.11.1",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "lottie-web": "^5.10.2",
     "ngx-lottie": "9.1",

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IMails } from 'src/app/interfaces/IMails';
+import { IMail } from 'src/app/interfaces/IMail';
 import {
   faArrowLeft,
   faEnvelope,
@@ -23,8 +23,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./specific-mail.component.scss']
 })
 export class SpecificMailComponent implements OnInit {
-  @Input() mails: IMails[];
-  mail: IMails | undefined;
+  @Input() mails: IMail[];
+  mail: IMail | undefined;
   id: number;
   index: number;
   faArrowLeft = faArrowLeft;

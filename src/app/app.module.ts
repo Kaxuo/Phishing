@@ -15,13 +15,14 @@ import { NotVotedComponent } from './components/mailbox/components/not-voted/not
 import { VotedComponent } from './components/mailbox/components/voted/voted.component';
 import { SummaryComponent } from './components/mailbox/components/summary/summary.component';
 import { SpecificMailComponent } from './components/mailbox/components/specific-mail/specific-mail.component';
+import { ResultsComponent } from './components/results/results.component';
 
 export function playerFactory() {
   return player;
 }
 
 @NgModule({
-  declarations: [AppComponent, LandingPageComponent, MailboxComponent, SidebarComponent, InboxComponent, NotReadComponent, NotVotedComponent, VotedComponent, SummaryComponent, SpecificMailComponent],
+  declarations: [AppComponent, LandingPageComponent, MailboxComponent, SidebarComponent, InboxComponent, NotReadComponent, NotVotedComponent, VotedComponent, SummaryComponent, SpecificMailComponent, ResultsComponent],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, ReactiveFormsModule, LottieModule.forRoot({ player: playerFactory })],
   providers: [],
   bootstrap: [AppComponent]

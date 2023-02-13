@@ -1,4 +1,4 @@
-export interface IMails {
+export interface IMail {
   id: number;
   sender: string;
   receiver: string;

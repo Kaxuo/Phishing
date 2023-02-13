@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IMails } from 'src/app/interfaces/IMails';
+import { IMail } from 'src/app/interfaces/IMail';
 import { MailsService } from 'src/app/services/mails.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { MailsService } from 'src/app/services/mails.service';
 })
 export class MailboxComponent implements OnInit {
   page: string;
-  mails$: Observable<IMails[]>;
+  mails$: Observable<IMail[]>;
   routerActiveBackground = (query: string) => (query == this.page ? 'bg-indigo-600' : '');
   constructor(private mailsService: MailsService, private route: ActivatedRoute, private router: Router) {}
 

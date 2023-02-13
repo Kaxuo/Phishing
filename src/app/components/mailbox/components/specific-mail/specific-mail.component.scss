@@ -1,6 +1,11 @@
 @import 'src/app/components/mailbox/mailbox.component.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+$animation-color: #000033;
+$animation-color2: #330000;
+$dimension: 3px;
+$total-dimension: 100%;
+
 .icons {
   display: grid;
   grid-template-columns: 20px 20px 20px 20px 20px 20px 20px 1fr 75px 20px 20px;
@@ -33,4 +38,157 @@
 .buttons {
   display: flex;
   justify-content: space-around;
+  .fake {
+    background-color: #dc2626;
+    span:nth-child(2) {
+      background: linear-gradient(to right, transparent, $animation-color2);
+    }
+    span:nth-child(3) {
+      background: linear-gradient(to right, transparent, $animation-color2);
+    }
+    span:nth-child(4) {
+      background: linear-gradient(to right, transparent, $animation-color2);
+    }
+    span:nth-child(5) {
+      background: linear-gradient(to right, transparent, $animation-color2);
+    }
+  }
+  .true {
+    background-color: #2563eb;
+    span:nth-child(2) {
+      background: linear-gradient(to right, transparent, $animation-color);
+    }
+    span:nth-child(3) {
+      background: linear-gradient(to right, transparent, $animation-color);
+    }
+    span:nth-child(4) {
+      background: linear-gradient(to right, transparent, $animation-color);
+    }
+    span:nth-child(5) {
+      background: linear-gradient(to right, transparent, $animation-color);
+    }
+  }
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  button {
+    width: 120px;
+    padding: 8px 16px;
+    &:hover {
+      background-color: #ddd;
+      color: black;
+    }
+  }
+  .previous {
+    background-color: #f1f1f1;
+  }
+  .next {
+    background-color: #04aa6d;
+    color: white;
+  }
+}
+
+.button-1 {
+  position: relative;
+  width: 150px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: box-shadow 0.2s ease-in-out;
+  overflow: hidden;
+  span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $total-dimension;
+    height: $dimension;
+    animation: animate_one 2s linear infinite;
+  }
+  span:nth-child(3) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $dimension;
+    height: $total-dimension;
+    animation: animate_two 2s linear infinite;
+    animation-delay: 1s;
+  }
+  span:nth-child(4) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: $total-dimension;
+    height: $dimension;
+    animation: animate_three 2s linear infinite;
+  }
+  span:nth-child(5) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $dimension;
+    height: $total-dimension;
+    animation: animate_four 2s linear infinite;
+    animation-delay: 1s;
+  }
+}
+
+.button-1:hover {
+  box-shadow: 7px 4px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+@keyframes animate_one {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes animate_two {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes animate_three {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes animate_four {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
 }

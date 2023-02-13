@@ -1,0 +1,13 @@
+<div class="text-center">Congratulations Nguyen Hoang, Your Score is 100 %</div>
+<hr class="line">
+<div class="text-center my-5">Here are the other's Score !</div>
+<div *ngIf="scores$| async as list" class="grid mx-1">
+  <div class="card" *ngFor="let item of list; let i = index">
+    <img class="rounded-full icon" src="assets/img/blank-profile.svg" alt="profile" />
+    <div>
+      <div class="text">{{item.name}}</div>
+      <div class="">{{item.score}}</div>
+    </div>
+    <div class="rank">{{(i+1).toLocaleString('en-Us', {minimumIntegerDigits: 2, useGrouping:false})}}</div>
+  </div>
+</div>

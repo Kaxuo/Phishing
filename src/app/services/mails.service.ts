@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IMails } from '../interfaces/IMails';
+import { IMail } from '../interfaces/IMail';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MailsService {
-  private mails: IMails[];
+  private mails: IMail[];
   constructor() {
     this.mails = fakeData;
   }
 
-  getMails(): Observable<IMails[]> {
+  getMails(): Observable<IMail[]> {
     return of(this.mails);
   }
 }
