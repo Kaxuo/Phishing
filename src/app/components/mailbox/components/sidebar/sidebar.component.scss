@@ -28,10 +28,15 @@
 
 .profile {
   display: grid;
-  grid-template-columns: 15px 200px;
+  grid-template-columns: 15px 175px;
   column-gap: 10px;
   .icon {
     scale: 2;
     justify-self: center;
+  }
+  .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

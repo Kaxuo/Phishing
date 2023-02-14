@@ -6,6 +6,12 @@ $animation-color2: #330000;
 $dimension: 3px;
 $total-dimension: 100%;
 
+.block {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr 30px auto auto;
+  height: 95vh;
+}
+
 .icons {
   display: grid;
   grid-template-columns: 20px 20px 20px 20px 20px 20px 20px 1fr 75px 20px 20px;
@@ -33,6 +39,10 @@ $total-dimension: 100%;
 
 .content {
   font-family: 'Roboto', sans-serif;
+}
+
+.line {
+  margin: 1rem 1rem;
 }
 
 .buttons {

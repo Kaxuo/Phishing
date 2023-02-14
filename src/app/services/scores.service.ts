@@ -40,11 +40,36 @@ export const fakeData = [
   {
     id: 5,
     name: 'King',
-    score: '100'
+    score: '45'
   },
   {
     id: 6,
-    name: 'Jaycee',
-    score: '80'
+    name: 'Kain',
+    score: '82'
+  },
+  {
+    id: 7,
+    name: 'Cecil',
+    score: '12'
+  },
+  {
+    id: 8,
+    name: 'Luna',
+    score: '50'
+  },
+  {
+    id: 9,
+    name: 'Armor',
+    score: '68'
+  },
+  {
+    id: 10,
+    name: 'Law',
+    score: '70'
+  },
+  {
+    id: 11,
+    name: 'Claire',
+    score: '38'
   }
 ];
