@@ -53,8 +53,9 @@
   </div>
   <div class="results">
     <div class="text-center text-white pt-3">Congratulations Nguyen Hoang, You got 100%</div>
-    <div class="lottie mt-auto"><ng-lottie [options]="perfect" (animationCreated)="onAnimate($event)"></ng-lottie></div>
-    <div class="text-center text-white pt-3">Amazing ! it's impossible to scam you ! We know for sure that you won't waste any money</div>
+    <div class="lottie mt-auto"><ng-lottie [options]="perfect" (animationCreated)="onAnimate()"></ng-lottie></div>
+    <div class="text-center text-white pt-3">Amazing ! it's impossible to scam you ! We know for sure that you won't
+      waste any money</div>
     <!-- <div class="text-center text-white pt-3">Awesome ! Pretty good score, scamming you looks pretty hard , what a keen eye !</div>
     <div class="text-center text-white pt-3">Cool ! It's a good score, scamming you is tough ! glad you're so careful !</div>
     <div class="text-center text-white pt-3">It's okay ! You're pretty careful but don't hesitate to take your time to check your emails !</div>
@@ -79,17 +80,20 @@
     </div>
   </div>
   <div class="hiring mx-auto mt-auto pt-1" (click)="goToBuSiCareerPage()">
-    <a target="_blank" class="inline-flex items-center rounded-full bg-black p-1 pr-2 text-white hover:text-gray-200 sm:text-base lg:text-sm xl:text-base">
-      <span class="rounded-full bg-gradient-to-r from-teal-500 to-cyan-600 px-3 py-0.5 text-sm font-semibold leading-5 text-white">We're hiring</span>
+    <a target="_blank"
+      class="inline-flex items-center rounded-full bg-black p-1 pr-2 text-white hover:text-gray-200 sm:text-base lg:text-sm xl:text-base">
+      <span
+        class="rounded-full bg-gradient-to-r from-teal-500 to-cyan-600 px-3 py-0.5 text-sm font-semibold leading-5 text-white">We're
+        hiring</span>
       <span class="ml-4 text-sm">Visit our careers page</span>
-      <svg class="ml-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path
-          fill-rule="evenodd"
+      <svg class="ml-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+        aria-hidden="true">
+        <path fill-rule="evenodd"
           d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
           clip-rule="evenodd" />
       </svg>
     </a>
-    <ng-lottie [options]="hiring" (animationCreated)="onAnimate($event)"></ng-lottie>
+    <ng-lottie [options]="hiring" (animationCreated)="onAnimate()"></ng-lottie>
   </div>
   <ng-template #skeleton>
     <div class="grid mx-1 py-3">

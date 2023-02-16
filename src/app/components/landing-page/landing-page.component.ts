@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MailsService } from 'src/app/services/mails.service';
+import { take } from 'rxjs';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { ISession } from 'src/app/interfaces/ISession';
+import { IMail } from 'src/app/interfaces/IMail';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,15 +20,30 @@ export class LandingPageComponent implements OnInit {
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(25)]]
   });
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private mailsService: MailsService, private storageService: LocalStorageService) {}
 
-  ngOnInit(): void {}
-
-  onAnimate(animationItem: AnimationItem): void {
-    console.log(animationItem);
+  ngOnInit(): void {
+    const session = localStorage.getItem('session');
+    session && this.router.navigate(['mailbox'], { queryParams: { page: 'inbox' } });
   }
 
+  onAnimate(): void {}
+
   startGame() {
-    this.router.navigate(['mailbox'], { queryParams: { page: 'inbox' } });
+    this.mailsService
+      .getMails()
+      .pipe(take(1))
+      .subscribe((mails) => {
+        const gameMails: IMail[] = mails.map((el) => {
+          return { ...el, read: false, voted: false, choice: null };
+        });
+        const session: ISession = {
+          name: this.form.controls['name'].value,
+          mails: gameMails,
+          score: null
+        };
+        this.storageService.setSession(session);
+        this.router.navigate(['mailbox'], { queryParams: { page: 'inbox' } });
+      });
   }
 }

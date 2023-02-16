@@ -4,7 +4,6 @@ export interface IMail {
   receiver: string;
   subject: string;
   content: string;
-  fake: boolean;
   read?: boolean;
   voted?: boolean;
   choice: boolean | null;

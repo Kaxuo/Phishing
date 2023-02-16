@@ -5,17 +5,18 @@
   <main class="hero mt-3">
     <h2 class="title">Phishing Game</h2>
     <p class="text">Are you able to distinguish between a real and a fake email ? Let's find out !</p>
-    <div class="input-group" [formGroup]="form">
+    <form class="input-group" [formGroup]="form">
       <input class="name" placeholder="Enter your name" formControlName="name" />
-      <button class="btn disabled:opacity-50" [disabled]="form.invalid" (click)="startGame()">Start game</button>
-    </div>
+      <button class="btn disabled:opacity-50" [disabled]="form.invalid" (click)="startGame()" type="button">Start
+        game</button>
+    </form>
     <div class="text-white text-center italic">
       <small class="text-white text-center italic">Maximum 25 characters</small>
       <br />
       <small>Your data will be saved, make sure you don't put anything important !</small>
       <br />
     </div>
-    <div class="lottie mt-auto"><ng-lottie [options]="options" (animationCreated)="onAnimate($event)"></ng-lottie></div>
+    <div class="lottie mt-auto"><ng-lottie [options]="options" (animationCreated)="onAnimate()"></ng-lottie></div>
   </main>
   <footer class="footer text-base text-white text-center">&copy; 2023 BuSi | All rights reserved.</footer>
 </div>

@@ -5,51 +5,38 @@
       <img src="assets/img/busi-logo.png" alt="BuSi" />
     </div>
     <nav class="mt-5 flex-1 space-y-1 px-2" aria-label="Sidebar">
-      <a
-        class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
-        routerLink="/mailbox"
-        [queryParams]="{ page: 'inbox' }"
-        [ngClass]="routerActiveBackground('inbox')">
+      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
+        routerLink="/mailbox" [queryParams]="{ page: 'inbox' }" [ngClass]="routerActiveBackground('inbox')">
         <fa-icon class="text-indigo-300 icon" [icon]="faInbox"></fa-icon>
         <span class="flex-1">Inbox</span>
       </a>
-      <a
-        class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
-        routerLink="/mailbox"
-        [queryParams]="{ page: 'unread' }"
-        [ngClass]="routerActiveBackground('unread')">
+      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
+        routerLink="/mailbox" [queryParams]="{ page: 'unread' }" [ngClass]="routerActiveBackground('unread')">
         <fa-icon class="text-indigo-300 icon" [icon]="faEnvelope"></fa-icon>
         <span class="flex-1">Not read</span>
       </a>
-      <a
-        class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
-        routerLink="/mailbox"
-        [queryParams]="{ page: 'notvoted' }"
-        [ngClass]="routerActiveBackground('notvoted')">
+      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
+        routerLink="/mailbox" [queryParams]="{ page: 'notvoted' }" [ngClass]="routerActiveBackground('notvoted')">
         <fa-icon class="text-indigo-300 icon" [icon]="faClipboardQuestion"></fa-icon>
         <span class="flex-1">Not voted</span>
       </a>
-      <a
-        class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
-        routerLink="/mailbox"
-        [queryParams]="{ page: 'voted' }"
-        [ngClass]="routerActiveBackground('voted')">
+      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
+        routerLink="/mailbox" [queryParams]="{ page: 'voted' }" [ngClass]="routerActiveBackground('voted')">
         <fa-icon class="text-indigo-300 icon" [icon]="faClipboardCheck"></fa-icon>
         <span class="flex-1">Voted</span>
       </a>
-      <a
-        class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
-        routerLink="/mailbox"
-        [queryParams]="{ page: 'all' }"
-        [ngClass]="routerActiveBackground('all')">
+      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
+        routerLink="/mailbox" [queryParams]="{ page: 'all' }" [ngClass]="routerActiveBackground('all')">
         <fa-icon class="text-indigo-300 icon" [icon]="faCheckToSlot"></fa-icon>
         <span class="flex-1">Summary</span>
       </a>
-      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600" routerLink="/results">
+      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
+        routerLink="/results">
         <fa-icon class="text-indigo-300 icon" [icon]="faShare"></fa-icon>
         <span class="flex-1">Send</span>
       </a>
-      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600" routerLink="/">
+      <a class="text-white items-center px-2 py-2 text-sm font-medium rounded-md menu-content hover:bg-indigo-600"
+        (click)="logout()">
         <fa-icon class="text-indigo-300 icon" [icon]="faSignOut"></fa-icon>
         <span class="flex-1">Log out</span>
       </a>
@@ -59,7 +46,7 @@
     <a class="group block w-full flex-shrink-0">
       <div class="profile px-2 py-2 w-full">
         <img class="rounded-full icon" src="assets/img/blank-profile.svg" alt="profile" />
-        <div class="ml-3 text-sm font-medium text-white name">Nguyen Hoang</div>
+        <div class="ml-3 text-sm font-medium text-white name">{{name}}</div>
       </div>
     </a>
   </div>

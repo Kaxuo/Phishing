@@ -1,12 +1,17 @@
 <div class="main-grid h-screen">
   <app-sidebar [routerActiveBackground]="routerActiveBackground"></app-sidebar>
-  <div class="right-side" *ngIf="mails$ | async as mails; else skeleton">
-    <app-inbox *ngIf="page == 'inbox'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-inbox>
-    <app-not-read *ngIf="page == 'unread'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-not-read>
-    <app-not-voted *ngIf="page == 'notvoted'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-not-voted>
-    <app-voted *ngIf="page == 'voted'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-voted>
-    <app-summary *ngIf="page == 'all'" [mails]="mails" [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-summary>
-    <app-specific-mail *ngIf="page == 'mail'" [mails]="mails"></app-specific-mail>
+  <div class="right-side" *ngIf="gameSession$ | async as session; else skeleton">
+    <app-inbox *ngIf="page == 'inbox'" [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-inbox>
+    <app-not-read *ngIf="page == 'unread'" [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-not-read>
+    <app-not-voted *ngIf="page == 'notvoted'" [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-not-voted>
+    <app-voted *ngIf="page == 'voted'" [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-voted>
+    <app-summary *ngIf="page == 'all'" [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-summary>
+    <app-specific-mail *ngIf="page == 'mail'" [mails]="session.mails"></app-specific-mail>
   </div>
   <ng-template #skeleton>
     <div class="px-4 mt-3 overflow-hidden">

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IScore } from 'src/app/interfaces/IScores';
 import { ScoresService } from 'src/app/services/scores.service';
-import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
@@ -36,9 +35,7 @@ export class ResultsComponent {
     this.scores$ = this.scores.getScores();
   }
 
-  onAnimate(animationItem: AnimationItem): void {
-    console.log(animationItem);
-  }
+  onAnimate(): void {}
 
   goToBuSiCareerPage() {
     window.open('https://busi.eu/career/', '_blank');

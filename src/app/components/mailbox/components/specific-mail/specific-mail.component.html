@@ -9,10 +9,12 @@
     <fa-icon class="text-gray-300 icon py-1 px-2 hover:bg-gray-200" [icon]="faEllipsisVertical"></fa-icon>
     <div class="empty"></div>
     <div>{{ index + 1 }} of {{ mails.length }}</div>
-    <button class="text-gray-600 icon py-1 px-2 hover:bg-gray-200 disabled:opacity-10" (click)="previousMail()" [disabled]="index + 1 == 1">
+    <button class="text-gray-600 icon py-1 px-2 hover:bg-gray-200 disabled:opacity-10" (click)="previousMail()"
+      [disabled]="index + 1 == 1">
       <fa-icon [icon]="faChevronLeft"></fa-icon>
     </button>
-    <button class="text-gray-600 icon py-1 px-2 hover:bg-gray-200 disabled:opacity-10" (click)="nextMail()" [disabled]="index + 1 == mails.length">
+    <button class="text-gray-600 icon py-1 px-2 hover:bg-gray-200 disabled:opacity-10" (click)="nextMail()"
+      [disabled]="index + 1 == mails.length">
       <fa-icon [icon]="faChevronRight"></fa-icon>
     </button>
   </div>
@@ -40,7 +42,7 @@
 
   <hr class="line" />
   <div class="buttons">
-    <div class="button-1 fake">
+    <div class="button-1 fake" (click)="vote(true)">
       <button>Phishing mail</button>
       <ng-container *ngIf="mail?.choice === true">
         <span></span>
@@ -49,7 +51,7 @@
         <span></span>
       </ng-container>
     </div>
-    <div class="button-1 true">
+    <div class="button-1 true" (click)="vote(false)">
       <button class="">Real mail</button>
       <ng-container *ngIf="mail?.choice === false">
         <span></span>
@@ -61,7 +63,9 @@
   </div>
 
   <div class="navigation-buttons mx-5">
-    <button class="previous disabled:opacity-10" (click)="previousMail()" [disabled]="index + 1 == 1">&laquo; Previous</button>
-    <button class="next disabled:opacity-10" (click)="nextMail()" [disabled]="index + 1 == mails.length">Next &raquo;</button>
+    <button class="previous disabled:opacity-10" (click)="previousMail()" [disabled]="index + 1 == 1">&laquo;
+      Previous</button>
+    <button class="next disabled:opacity-10" (click)="nextMail()" [disabled]="index + 1 == mails.length">Next
+      &raquo;</button>
   </div>
 </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IMail } from 'src/app/interfaces/IMail';
+import { ISession } from 'src/app/interfaces/ISession';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MailsService } from 'src/app/services/mails.service';
 
 @Component({
@@ -11,13 +12,24 @@ import { MailsService } from 'src/app/services/mails.service';
 })
 export class MailboxComponent implements OnInit {
   page: string;
-  mails$: Observable<IMail[]>;
+  gameSession$: Observable<ISession | null>;
   routerActiveBackground = (query: string) => (query == this.page ? 'bg-indigo-600' : '');
-  constructor(private mailsService: MailsService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private mailsService: MailsService, private route: ActivatedRoute, private router: Router, private storageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.mails$ = this.mailsService.getMails();
-    this.route.queryParams.subscribe((queryParams) => (this.page = queryParams['page']));
+    const session = this.storageService.session$.getValue();
+    !session && this.router.navigate(['/']);
+    this.route.queryParams.subscribe((queryParams) => {
+      this.page = queryParams['page'];
+      if (queryParams['id']) {
+        const index = session?.mails.findIndex((el) => el.id === queryParams['id']);
+        if (!session!.mails[index!].read) {
+          session!.mails[index!].read = true;
+          this.storageService.setSession(session!);
+        }
+      }
+    });
+    this.gameSession$ = this.storageService.getSession();
   }
 
   navigateToSpecificMail(id: number) {
