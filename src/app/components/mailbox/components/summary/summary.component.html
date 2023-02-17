@@ -38,10 +38,10 @@
                 <td class="responsive-cell px-3 py-2 text-sm text-gray-500">{{ mail.subject }}</td>
                 <td class="responsive-cell px-3 py-2 text-sm text-gray-500">{{ mail.content }}</td>
                 <td class="responsive-cell px-3 py-2 text-sm text-gray-500">
-                  <div class="bg-red-600 italic text-white text-center" *ngIf="mail.choice == true">Fake
+                  <div class="bg-red-600 italic text-white text-center" *ngIf="mail.phishing == true">Fake
                   </div>
-                  <div class="bg-blue-600 italic text-white text-center" *ngIf="mail.choice == false">Real</div>
-                  <div class="bg-fuchsia-600  italic text-white text-center" *ngIf="mail.choice == null">No Guess
+                  <div class="bg-blue-600 italic text-white text-center" *ngIf="mail.phishing == false">Real</div>
+                  <div class="bg-fuchsia-600  italic text-white text-center" *ngIf="mail.phishing == null">No Guess
                   </div>
                 </td>
               </tr>

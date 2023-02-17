@@ -1,5 +1,5 @@
 export interface IScore {
   id: number;
-  name: string;
-  score: string;
+  username: string;
+  score: number;
 }

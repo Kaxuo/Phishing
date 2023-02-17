@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ISession } from 'src/app/interfaces/ISession';
+import { GlobalService } from 'src/app/services/global.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { MailsService } from 'src/app/services/mails.service';
 
 @Component({
   selector: 'app-mailbox',
@@ -14,11 +14,10 @@ export class MailboxComponent implements OnInit {
   page: string;
   gameSession$: Observable<ISession | null>;
   routerActiveBackground = (query: string) => (query == this.page ? 'bg-indigo-600' : '');
-  constructor(private mailsService: MailsService, private route: ActivatedRoute, private router: Router, private storageService: LocalStorageService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private storageService: LocalStorageService, public global: GlobalService) {}
 
   ngOnInit(): void {
     const session = this.storageService.session$.getValue();
-    !session && this.router.navigate(['/']);
     this.route.queryParams.subscribe((queryParams) => {
       this.page = queryParams['page'];
       if (queryParams['id']) {

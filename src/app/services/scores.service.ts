@@ -1,75 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IScore } from '../interfaces/IScores';
+import { ISession } from '../interfaces/ISession';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScoresService {
-  private scores: IScore[];
-  constructor() {
-    this.scores = fakeData;
+  private URL: string = 'http://localhost:8080/api';
+  constructor(private http: HttpClient) {}
+
+  sendMails(session: ISession): Observable<ISession> {
+    return this.http.post<ISession>(`${this.URL}/sessions`, session);
   }
 
   getScores(): Observable<IScore[]> {
-    return of(this.scores);
+    return this.http.get<IScore[]>(`${this.URL}/sessions`);
   }
 }
-
-export const fakeData = [
-  {
-    id: 1,
-    name: 'Bob',
-    score: '20'
-  },
-  {
-    id: 2,
-    name: 'Jin',
-    score: '30'
-  },
-  {
-    id: 3,
-    name: 'Xiayou',
-    score: '75'
-  },
-  {
-    id: 4,
-    name: 'Bryan',
-    score: '80'
-  },
-  {
-    id: 5,
-    name: 'King',
-    score: '45'
-  },
-  {
-    id: 6,
-    name: 'Kain',
-    score: '82'
-  },
-  {
-    id: 7,
-    name: 'Cecil',
-    score: '12'
-  },
-  {
-    id: 8,
-    name: 'Luna',
-    score: '50'
-  },
-  {
-    id: 9,
-    name: 'Armor',
-    score: '68'
-  },
-  {
-    id: 10,
-    name: 'Law',
-    score: '70'
-  },
-  {
-    id: 11,
-    name: 'Claire',
-    score: '38'
-  }
-];

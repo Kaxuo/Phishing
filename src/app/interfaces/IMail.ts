@@ -6,5 +6,5 @@ export interface IMail {
   content: string;
   read?: boolean;
   voted?: boolean;
-  choice: boolean | null;
+  phishing: boolean | null;
 }

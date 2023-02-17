@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { faInbox, faEnvelope, faClipboardQuestion, faClipboardCheck, faCheckToSlot, faShare, faSignOut } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,19 +19,22 @@ export class SidebarComponent implements OnInit {
   faCheckToSlot = faCheckToSlot;
   faShare = faShare;
   faSignOut = faSignOut;
-  constructor(private router: Router) {}
+  constructor(private global: GlobalService) {}
 
   ngOnInit(): void {
     const session = localStorage.getItem('session');
-    if (session) this.name = JSON.parse(session)?.name;
+    if (session) this.name = JSON.parse(session)?.username;
   }
 
   switchOpen() {
     this.open$.next(!this.open$.getValue());
   }
 
+  confirmSend() {
+    this.global.confirmation.next(true);
+  }
+
   logout() {
-    localStorage.removeItem('session');
-    this.router.navigate(['/']);
+    this.global.logout.next(true);
   }
 }

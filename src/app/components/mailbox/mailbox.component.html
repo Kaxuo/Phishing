@@ -12,6 +12,8 @@
     <app-summary *ngIf="page == 'all'" [mails]="session.mails"
       [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-summary>
     <app-specific-mail *ngIf="page == 'mail'" [mails]="session.mails"></app-specific-mail>
+    <app-confirmation-send *ngIf="global.confirmation | async" [mails]="session.mails"></app-confirmation-send>
+    <app-logout *ngIf="global.logout | async"></app-logout>
   </div>
   <ng-template #skeleton>
     <div class="px-4 mt-3 overflow-hidden">

@@ -1,7 +1,7 @@
 import { IMail } from './IMail';
 
 export interface ISession {
-  name: string;
+  username: string;
   mails: IMail[];
-  score: string | null;
+  score: number | null;
 }

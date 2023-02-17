@@ -72,7 +72,7 @@ export class SpecificMailComponent implements OnInit {
     const session = this.storageService.session$.getValue()!;
     const mails = session!.mails || [];
     const index = mails!.findIndex((el) => el.id === this.route.snapshot.queryParams['id']);
-    mails[index] = { ...mails[index], voted: true, choice: value };
+    mails[index] = { ...mails[index], voted: true, phishing: value };
     this.mail = mails[index];
     const updatedSession: ISession = { ...session, mails };
     this.storageService.setSession(updatedSession);

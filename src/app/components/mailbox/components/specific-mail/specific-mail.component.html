@@ -44,7 +44,7 @@
   <div class="buttons">
     <div class="button-1 fake" (click)="vote(true)">
       <button>Phishing mail</button>
-      <ng-container *ngIf="mail?.choice === true">
+      <ng-container *ngIf="mail?.phishing === true">
         <span></span>
         <span></span>
         <span></span>
@@ -53,7 +53,7 @@
     </div>
     <div class="button-1 true" (click)="vote(false)">
       <button class="">Real mail</button>
-      <ng-container *ngIf="mail?.choice === false">
+      <ng-container *ngIf="mail?.phishing === false">
         <span></span>
         <span></span>
         <span></span>
