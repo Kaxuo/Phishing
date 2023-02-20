@@ -17,9 +17,10 @@ import { SummaryComponent } from './components/mailbox/components/summary/summar
 import { SpecificMailComponent } from './components/mailbox/components/specific-mail/specific-mail.component';
 import { ResultsComponent } from './components/results/results.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoadingComponent } from './components/shared/loading/loading.component';
-import { ConfirmationSendComponent } from './components/shared/confirmation-send/confirmation-send.component';
-import { LogoutComponent } from './components/shared/logout/logout.component';
+import { LoadingComponent } from './components/shared/modals/loading/loading.component';
+import { ConfirmationSendComponent } from './components/shared/modals/confirmation-send/confirmation-send.component';
+import { LogoutComponent } from './components/shared/modals/logout/logout.component';
+import { ReadyModalComponent } from './components/shared/modals/ready/ready-modal.component';
 
 export function playerFactory() {
   return player;
@@ -40,7 +41,8 @@ export function playerFactory() {
     ResultsComponent,
     LoadingComponent,
     ConfirmationSendComponent,
-    LogoutComponent
+    LogoutComponent,
+    ReadyModalComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, ReactiveFormsModule, HttpClientModule, LottieModule.forRoot({ player: playerFactory })],
   providers: [],

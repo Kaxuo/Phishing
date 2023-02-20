@@ -11,7 +11,7 @@ export class LogoutComponent {
   constructor(private router: Router, private global: GlobalService) {}
 
   logout() {
-    localStorage.removeItem('session');
+    localStorage.clear()
     this.router.navigate(['/']);
     this.global.logout.next(false);
   }

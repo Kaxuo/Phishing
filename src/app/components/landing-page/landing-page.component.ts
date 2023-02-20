@@ -3,7 +3,7 @@ import { AnimationOptions } from 'ngx-lottie';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MailsService } from 'src/app/services/mails.service';
-import { take } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ISession } from 'src/app/interfaces/ISession';
 import { IMail } from 'src/app/interfaces/IMail';
@@ -21,6 +21,8 @@ export class LandingPageComponent implements OnInit {
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(25)]]
   });
+  ready$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -35,6 +37,15 @@ export class LandingPageComponent implements OnInit {
   }
 
   onAnimate(): void {}
+
+  readyFlag() {
+    this.ready$.next(!this.ready$.getValue());
+  }
+
+  outsideClick(t: MouseEvent) {
+    const target = t.target as HTMLElement;
+    target.className == 'flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 modal' && this.ready$.next(false);
+  }
 
   startGame() {
     this.global.loading.next(true);
