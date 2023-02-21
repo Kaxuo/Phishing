@@ -51,10 +51,10 @@ export class SidebarComponent implements OnInit {
   }
 
   startCountdown() {
-    const countdownSession = localStorage.getItem('timer')!;
+    const countdownSession = localStorage.getItem('timer') || 1500;
     const countdown$ = timer(0, 2000).pipe(
-      take(+countdownSession || 1500),
-      map((secondsElapsed) => +countdownSession || 1500 - secondsElapsed)
+      take(+countdownSession),
+      map((secondsElapsed) => +countdownSession - secondsElapsed)
     );
     this.subscriptions = countdown$.subscribe((secondsLeft) => {
       this.secondsLeft = secondsLeft;

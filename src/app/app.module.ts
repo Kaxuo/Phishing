@@ -21,6 +21,7 @@ import { LoadingComponent } from './components/shared/modals/loading/loading.com
 import { ConfirmationSendComponent } from './components/shared/modals/confirmation-send/confirmation-send.component';
 import { LogoutComponent } from './components/shared/modals/logout/logout.component';
 import { ReadyModalComponent } from './components/shared/modals/ready/ready-modal.component';
+import { NewMailComponent } from './components/new-mail/new-mail.component';
 
 export function playerFactory() {
   return player;
@@ -42,7 +43,8 @@ export function playerFactory() {
     LoadingComponent,
     ConfirmationSendComponent,
     LogoutComponent,
-    ReadyModalComponent
+    ReadyModalComponent,
+    NewMailComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, ReactiveFormsModule, HttpClientModule, LottieModule.forRoot({ player: playerFactory })],
   providers: [],

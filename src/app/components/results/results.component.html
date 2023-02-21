@@ -52,15 +52,18 @@
     <div class="star"></div>
   </div>
   <div class="results">
-    <div class="text-center text-white pt-3">Congratulations Nguyen Hoang, You got {{score}}%</div>
+    <div class="text-center text-white pt-3">Congratulations {{ session.username }}, You got {{ score }}%</div>
     <div class="lottie mt-auto"><ng-lottie [options]="animation" (animationCreated)="onAnimate()"></ng-lottie></div>
-    <div class="text-center text-white pt-3">{{text}}</div>
+    <div class="text-center text-white pt-3">{{ text }}</div>
   </div>
 
   <hr class="line" />
   <div class="text-center my-5 text-white">Here are the others's Score !</div>
   <div *ngIf="scores$ | async as list; else skeleton" class="grid mx-1 py-3">
-    <div class="card" *ngFor="let item of list; let i = index">
+    <div
+      class="card"
+      *ngFor="let item of list; let i = index"
+      [ngStyle]="session.username == item.username && score == item.score ? { 'background-color': '#666699' } : {}">
       <img class="rounded-full icon" src="assets/img/blank-profile.svg" alt="profile" *ngIf="i % 6 == 0" />
       <img class="rounded-full icon" src="assets/img/blank2.webp" alt="profile" *ngIf="i % 6 == 1" />
       <img class="rounded-full icon" src="assets/img/blank3.webp" alt="profile" *ngIf="i % 6 == 2" />
@@ -75,15 +78,12 @@
     </div>
   </div>
   <div class="hiring mx-auto mt-auto pt-1" (click)="goToBuSiCareerPage()">
-    <a target="_blank"
-      class="inline-flex items-center rounded-full bg-black p-1 pr-2 text-white hover:text-gray-200 sm:text-base lg:text-sm xl:text-base">
-      <span
-        class="rounded-full bg-gradient-to-r from-teal-500 to-cyan-600 px-3 py-0.5 text-sm font-semibold leading-5 text-white">We're
-        hiring</span>
+    <a target="_blank" class="inline-flex items-center rounded-full bg-black p-1 pr-2 text-white hover:text-gray-200 sm:text-base lg:text-sm xl:text-base">
+      <span class="rounded-full bg-gradient-to-r from-teal-500 to-cyan-600 px-3 py-0.5 text-sm font-semibold leading-5 text-white">We're hiring</span>
       <span class="ml-4 text-sm">Visit our careers page</span>
-      <svg class="ml-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-        aria-hidden="true">
-        <path fill-rule="evenodd"
+      <svg class="ml-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path
+          fill-rule="evenodd"
           d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
           clip-rule="evenodd" />
       </svg>

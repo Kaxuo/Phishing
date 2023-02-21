@@ -33,7 +33,7 @@ export class ResultsComponent {
         return finalValue;
       })
     );
-    this.score = (this.session.score! / this.session.mails.length) * 100;
+    this.score = Math.round((this.session.score! / this.session.mails.length) * 100);
     switch (true) {
       case this.score == 100:
         this.animation = {
@@ -57,7 +57,7 @@ export class ResultsComponent {
         this.animation = {
           path: '/assets/lottie/bronze.json'
         };
-        this.text = "It's okay ! You're pretty careful but don't hesitate to take your time to check your emails !";
+        this.text = "It's okay ! You're pretty careful but feel free to take your time to check your emails !";
         break;
       case this.score < 50:
         this.animation = {
