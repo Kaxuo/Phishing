@@ -1,16 +1,31 @@
 <div class="main-grid h-screen">
   <app-sidebar [routerActiveBackground]="routerActiveBackground"></app-sidebar>
   <div class="right-side" *ngIf="gameSession$ | async as session; else skeleton">
-    <app-inbox *ngIf="page == 'inbox'" [mails]="session.mails"
-      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-inbox>
-    <app-not-read *ngIf="page == 'unread'" [mails]="session.mails"
-      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-not-read>
-    <app-not-voted *ngIf="page == 'notvoted'" [mails]="session.mails"
-      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-not-voted>
-    <app-voted *ngIf="page == 'voted'" [mails]="session.mails"
-      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-voted>
-    <app-summary *ngIf="page == 'all'" [mails]="session.mails"
-      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"></app-summary>
+    <app-inbox
+      *ngIf="page == 'inbox'"
+      [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"
+      [removeHtml]="removeHtml"></app-inbox>
+    <app-not-read
+      *ngIf="page == 'unread'"
+      [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"
+      [removeHtml]="removeHtml"></app-not-read>
+    <app-not-voted
+      *ngIf="page == 'notvoted'"
+      [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"
+      [removeHtml]="removeHtml"></app-not-voted>
+    <app-voted
+      *ngIf="page == 'voted'"
+      [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"
+      [removeHtml]="removeHtml"></app-voted>
+    <app-summary
+      *ngIf="page == 'all'"
+      [mails]="session.mails"
+      [navigateToSpecificMail]="navigateToSpecificMail.bind(this)"
+      [removeHtml]="removeHtml"></app-summary>
     <app-specific-mail *ngIf="page == 'mail'" [mails]="session.mails"></app-specific-mail>
     <app-confirmation-send *ngIf="global.confirmation | async" [mails]="session.mails"></app-confirmation-send>
     <app-logout *ngIf="global.logout | async"></app-logout>

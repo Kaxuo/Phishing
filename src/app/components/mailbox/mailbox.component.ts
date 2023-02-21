@@ -34,4 +34,8 @@ export class MailboxComponent implements OnInit {
   navigateToSpecificMail(id: number) {
     this.router.navigate(['mailbox'], { queryParams: { page: 'mail', id: id, from: this.page } });
   }
+
+  removeHtml(text: string) {
+    return text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '');
+  }
 }

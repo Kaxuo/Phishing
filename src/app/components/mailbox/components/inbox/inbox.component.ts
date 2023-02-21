@@ -10,6 +10,7 @@ import { faSquare, faStar, faShareSquare } from '@fortawesome/free-regular-svg-i
 export class InboxComponent implements OnInit {
   @Input() mails: IMail[];
   @Input() navigateToSpecificMail: (args: number) => void;
+  @Input() removeHtml: (args: string) => string;
   faSquare = faSquare;
   faStar = faStar;
   faShareSquare = faShareSquare;

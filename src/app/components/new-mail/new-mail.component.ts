@@ -32,8 +32,8 @@ export class NewMailComponent {
     this.mailService
       .createMail(this.mailForm.value)
       .pipe(take(1))
-      .subscribe((data) => {
-        console.log(data);
+      .subscribe(() => {
+        this.mailForm.reset();
         this.globalService.loading.next(false);
       });
   }
