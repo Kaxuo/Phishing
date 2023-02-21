@@ -13,4 +13,8 @@ export class MailsService {
   getMails(): Observable<IMail[]> {
     return this.http.get<IMail[]>(`${this.URL}/mails`);
   }
+
+  createMail(fakeMail: IMail): Observable<IMail> {
+    return this.http.post<IMail>(`${this.URL}/mails`, fakeMail);
+  }
 }

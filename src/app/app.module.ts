@@ -22,6 +22,7 @@ import { ConfirmationSendComponent } from './components/shared/modals/confirmati
 import { LogoutComponent } from './components/shared/modals/logout/logout.component';
 import { ReadyModalComponent } from './components/shared/modals/ready/ready-modal.component';
 import { NewMailComponent } from './components/new-mail/new-mail.component';
+import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 export function playerFactory() {
   return player;
@@ -46,8 +47,16 @@ export function playerFactory() {
     ReadyModalComponent,
     NewMailComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, ReactiveFormsModule, HttpClientModule, LottieModule.forRoot({ player: playerFactory })],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    LottieModule.forRoot({ player: playerFactory }),
+    EditorModule
+  ],
+  providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

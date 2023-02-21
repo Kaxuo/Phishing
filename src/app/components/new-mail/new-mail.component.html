@@ -1,8 +1,9 @@
-<form class="grid-form w-3/12 m-auto">
+<form class="grid-form w-9/12 m-auto" [formGroup]="mailForm">
   <div>
     <label for="Sender" class="block text-sm font-medium text-gray-700">Sender</label>
     <div class="mt-1">
       <input
+        formControlName="sender"
         type="email"
         name="Sender"
         id="Sender"
@@ -14,6 +15,7 @@
     <label for="Receiver" class="block text-sm font-medium text-gray-700">Receiver</label>
     <div class="mt-1">
       <input
+        formControlName="receiver"
         type="email"
         name="Receiver"
         id="Receiver"
@@ -21,10 +23,31 @@
         placeholder="Receiver@example.com" />
     </div>
   </div>
+  <div class="grid-radio">
+    <div class="flex items-center pl-4 border border-gray-300 rounded dark:border-gray-700">
+      <input
+        id="bordered-radio-1"
+        type="radio"
+        formControlName="phishing"
+        [value]="true"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+      <label for="bordered-radio-1" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Phishing</label>
+    </div>
+    <div class="flex items-center pl-4 border border-gray-300 rounded dark:border-gray-700">
+      <input
+        id="bordered-radio-2"
+        type="radio"
+        [value]="false"
+        formControlName="phishing"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+      <label for="bordered-radio-2" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Real Mail</label>
+    </div>
+  </div>
   <div>
     <label for="Subject" class="block text-sm font-medium text-gray-700">Subject</label>
     <div class="mt-1">
       <input
+        formControlName="subject"
         type="text"
         name="Subject"
         id="Subject"
@@ -32,4 +55,15 @@
         placeholder="Subject" />
     </div>
   </div>
+  <div>
+    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Content</label>
+    <editor
+      formControlName="content"
+      [init]="{
+        visual: false,
+        base_url: '/tinymce',
+        suffix: '.min'
+      }"></editor>
+  </div>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button" (click)="createFakeMail()">Button</button>
 </form>
