@@ -14,10 +14,10 @@ import {
   faStar,
   faReply
 } from '@fortawesome/free-solid-svg-icons';
-import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ISession } from 'src/app/interfaces/ISession';
+import tinymce from 'tinymce';
 
 @Component({
   selector: 'app-specific-mail',
@@ -41,7 +41,7 @@ export class SpecificMailComponent implements OnInit {
   faSquareArrowUpRight = faSquareArrowUpRight;
   faStar = faStar;
   faReply = faReply;
-  constructor(private location: Location, private route: ActivatedRoute, private router: Router, private storageService: LocalStorageService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private storageService: LocalStorageService) {}
 
   ngOnInit(): void {
     this.index = this.mails.findIndex((el) => el.id == this.route.snapshot.queryParams['id']);
@@ -58,6 +58,7 @@ export class SpecificMailComponent implements OnInit {
     this.router.navigate(['mailbox'], { queryParams: { page: 'mail', id: this.mails[nextIndex].id, from: this.route.snapshot.queryParams['from'] } });
     this.index = this.mails.findIndex((el) => el.id == this.mails[nextIndex].id);
     this.mail = this.mails.find((el) => el.id == this.mails[nextIndex].id);
+    tinymce.activeEditor?.setContent(this.mail!.content);
   }
 
   nextMail() {
@@ -66,6 +67,7 @@ export class SpecificMailComponent implements OnInit {
     this.router.navigate(['mailbox'], { queryParams: { page: 'mail', id: this.mails[nextIndex].id, from: this.route.snapshot.queryParams['from'] } });
     this.index = this.mails.findIndex((el) => el.id == this.mails[nextIndex].id);
     this.mail = this.mails.find((el) => el.id == this.mails[nextIndex].id);
+    tinymce.activeEditor?.setContent(this.mail!.content);
   }
 
   vote(value: boolean) {

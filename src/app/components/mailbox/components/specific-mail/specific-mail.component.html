@@ -36,10 +36,11 @@
 
   <div class="overflow-auto content mx-1">
     <editor
-      style="height: 100%"
+      class="h-full"
       [disabled]="true"
       initialValue="{{ mail?.content }}"
       [init]="{
+        content_style: 'body { pointer-events:none } ',
         height: '100%',
         visual: false,
         toolbar: false,
@@ -72,7 +73,7 @@
     </div>
   </div>
 
-  <div class="navigation-buttons mx-5">
+  <div class="navigation-buttons mx-5 mt-3">
     <button class="previous disabled:opacity-10" (click)="previousMail()" [disabled]="index + 1 == 1">&laquo; Previous</button>
     <button class="next disabled:opacity-10" (click)="nextMail()" [disabled]="index + 1 == mails.length">Next &raquo;</button>
   </div>

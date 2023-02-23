@@ -33,7 +33,7 @@ export class NewMailComponent {
       .createMail(this.mailForm.value)
       .pipe(take(1))
       .subscribe(() => {
-        this.mailForm.reset();
+        this.initForm();
         this.globalService.loading.next(false);
       });
   }
