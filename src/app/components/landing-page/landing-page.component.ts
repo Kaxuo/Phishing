@@ -8,7 +8,6 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ISession } from 'src/app/interfaces/ISession';
 import { IMail } from 'src/app/interfaces/IMail';
 import { GlobalService } from 'src/app/services/global.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-landing-page',
@@ -33,7 +32,6 @@ export class LandingPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(environment.apiUrl);
     const session = localStorage.getItem('session');
     session && this.router.navigate(['mailbox'], { queryParams: { page: 'inbox' } });
   }
