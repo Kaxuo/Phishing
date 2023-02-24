@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IMail } from '../interfaces/IMail';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MailsService {
-  private URL: string = 'http://localhost:8080/api';
+  private URL: string = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
   getMails(): Observable<IMail[]> {
