@@ -51,7 +51,7 @@ export class SidebarComponent implements OnInit {
   }
 
   startCountdown() {
-    const countdownSession = localStorage.getItem('timer') || 1500;
+    const countdownSession = localStorage.getItem('timer') || 1200;
     const countdown$ = timer(0, 2000).pipe(
       take(+countdownSession),
       map((secondsElapsed) => +countdownSession - secondsElapsed)

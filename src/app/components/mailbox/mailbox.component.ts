@@ -36,6 +36,6 @@ export class MailboxComponent implements OnInit {
   }
 
   removeHtml(text: string) {
-    return text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '');
+    return text?.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '');
   }
 }
